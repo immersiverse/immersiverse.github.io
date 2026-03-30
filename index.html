@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMMERSIVERSE</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      font-size: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="text"></div>
+
+  <script>
+    const startDays = 12;
+
+    // Set your target start date here (YYYY, MM-1, DD)
+    const targetDate = new Date(2026, 4, 12); // Example: April 10, 2026
+
+    function updateText() {
+      const now = new Date();
+      const diffTime = targetDate - now;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      const textElement = document.getElementById("text");
+
+      if (diffDays <= 0) {
+        textElement.textContent = "It has begun.";
+      } else {
+        textElement.textContent = diffDays + " days.";
+      }
+    }
+
+    updateText();
+
+    // Update every hour to stay accurate
+    setInterval(updateText, 1000 * 60 * 60);
+  </script>
+</body>
+</html>
